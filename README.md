@@ -155,3 +155,11 @@ sinfo
 Result: The partition state might temporarily show DOWN or DRAIN until the new node connects, then return to IDLE (Ready).
 
 
+
+
+👤 Author
+Prashant Bhopale
+Email: prashantbhopale67@gmail.com
+https://github.com/Prash2355
+
+
