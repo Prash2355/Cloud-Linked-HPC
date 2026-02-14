@@ -27,9 +27,9 @@ The cluster is segmented into **Public** (Monitoring/Bastion) and **Private** (C
 
 #### 1. The AWS IP Failover Mechanism
 Standard Layer 2 gratuitous ARP broadcasts do not work in AWS VPCs. To achieve High Availability for the Controller, we use the AWS API to move a secondary IP address between instances.
-* [cite_start]**Strategy:** We utilize a **Secondary Private IP** (`10.0.2.50`) that floats between the active and passive controllers[cite: 28].
+* [cite_start]**Strategy:** We utilize a **Secondary Private IP** (`192.168.2.50`) that floats between the active and passive controllers[cite: 28].
 * [cite_start]**Mechanism:** The `ocf:heartbeat:aws-vpc-move-ip` resource agent interacts with the AWS EC2 API[cite: 27].
-* **Failover Logic:** When the active controller fails, Pacemaker triggers an API call to unassign `10.0.2.50` from the failed node and reassign it to the standby node's ENI (Elastic Network Interface).
+* **Failover Logic:** When the active controller fails, Pacemaker triggers an API call to unassign `192.168.2.50` from the failed node and reassign it to the standby node's ENI (Elastic Network Interface).
 
 #### 2. "AI" Recovery Agent (Compute Self-Healing)
 While Slurm manages jobs, it does not manage AWS infrastructure. We bridge this gap with a custom agent.
