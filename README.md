@@ -11,6 +11,38 @@ The system features a **Self-Healing Compute Layer** powered by a custom Python 
 
 ---
 
+# Table of Contents
+
+1. [Cloud-Linked HPC: High-Availability AWS Cluster](#cloud-linked-hpc-high-availability-aws-cluster)
+2. [Executive Summary](#-executive-summary)
+3. [Architectural Design](#-architectural-design)
+   - [High-Level Topology](#high-level-topology)
+   - [Key Innovations](#-key-innovations)
+     - [1. The AWS IP Failover Mechanism](#1-the-aws-ip-failover-mechanism)
+     - [2. "AI" Recovery Agent (Compute Self-Healing)](#2-ai-recovery-agent-compute-self-healing)
+4. [Technical Specifications](#-technical-specifications)
+   - [🤖 AI Recovery Agent (Self-Healing)](#-ai-recovery-agent-self-healing)
+   - [📂 Parallel Storage (BeeGFS)](#-parallel-storage-beegfs)
+   - [⚡ Workload Management (Slurm)](#-workload-management-slurm)
+   - [📊 Observability (ELK & Zabbix)](#-observability-elk--zabbix)
+5. [Deployment Guide](#-deployment-guide)
+   - [Prerequisites](#prerequisites)
+   - [Installation Phases](#installation-phases)
+     - [Phase 1: Infrastructure & HA Setup](#phase-1-infrastructure--ha-setup)
+     - [Phase 2: Storage Fabric](#phase-2-storage-fabric)
+     - [Phase 3: Scheduler & Compute](#phase-3-scheduler--compute)
+     - [Phase 4: Operational Intelligence](#phase-4-operational-intelligence)
+6. [Operational Playbook](#-operational-playbook)
+   - [Verifying Cluster Status](#verifying-cluster-status)
+   - [Simulating Failover Scenarios](#simulating-failover-scenarios)
+     - [Scenario A: Controller Failover (Overlay IP)](#scenario-a-controller-failover-overlay-ip)
+     - [Scenario B: Compute Node Auto-Recovery (AI Agent)](#scenario-b-compute-node-auto-recovery-ai-agent)
+7. [Author](#-author)
+
+
+---
+
+
 ## 🏗️ Architectural Design
 
 ### High-Level Topology
